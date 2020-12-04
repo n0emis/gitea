@@ -144,6 +144,7 @@ func SignIn(ctx *context.Context) {
 	ctx.Data["PageIsSignIn"] = true
 	ctx.Data["PageIsLogin"] = true
 	ctx.Data["EnableSSPI"] = models.IsSSPIEnabled()
+	ctx.Data["AllowOnlyExternalAuthentication"] = setting.Service.AllowOnlyExternalAuthentication
 
 	ctx.HTML(200, tplSignIn)
 }

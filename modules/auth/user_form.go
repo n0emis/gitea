@@ -44,19 +44,20 @@ type InstallForm struct {
 	RegisterConfirm bool
 	MailNotify      bool
 
-	OfflineMode                    bool
-	DisableGravatar                bool
-	EnableFederatedAvatar          bool
-	EnableOpenIDSignIn             bool
-	EnableOpenIDSignUp             bool
-	DisableRegistration            bool
-	AllowOnlyExternalRegistration  bool
-	EnableCaptcha                  bool
-	RequireSignInView              bool
-	DefaultKeepEmailPrivate        bool
-	DefaultAllowCreateOrganization bool
-	DefaultEnableTimetracking      bool
-	NoReplyAddress                 string
+	OfflineMode                     bool
+	DisableGravatar                 bool
+	EnableFederatedAvatar           bool
+	EnableOpenIDSignIn              bool
+	EnableOpenIDSignUp              bool
+	DisableRegistration             bool
+	AllowOnlyExternalAuthentication bool
+	AllowOnlyExternalRegistration   bool
+	EnableCaptcha                   bool
+	RequireSignInView               bool
+	DefaultKeepEmailPrivate         bool
+	DefaultAllowCreateOrganization  bool
+	DefaultEnableTimetracking       bool
+	NoReplyAddress                  string
 
 	AdminName          string `binding:"OmitEmpty;AlphaDashDot;MaxSize(30)" locale:"install.admin_name"`
 	AdminPasswd        string `binding:"OmitEmpty;MaxSize(255)" locale:"install.admin_password"`

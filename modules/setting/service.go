@@ -19,6 +19,7 @@ var Service struct {
 	RegisterEmailConfirm                    bool
 	EmailDomainWhitelist                    []string
 	DisableRegistration                     bool
+	AllowOnlyExternalAuthentication         bool
 	AllowOnlyExternalRegistration           bool
 	ShowRegistrationButton                  bool
 	ShowMilestonesDashboardPage             bool
@@ -62,7 +63,8 @@ func newService() {
 	Service.ActiveCodeLives = sec.Key("ACTIVE_CODE_LIVE_MINUTES").MustInt(180)
 	Service.ResetPwdCodeLives = sec.Key("RESET_PASSWD_CODE_LIVE_MINUTES").MustInt(180)
 	Service.DisableRegistration = sec.Key("DISABLE_REGISTRATION").MustBool()
-	Service.AllowOnlyExternalRegistration = sec.Key("ALLOW_ONLY_EXTERNAL_REGISTRATION").MustBool()
+	Service.AllowOnlyExternalAuthentication = sec.Key("ALLOW_ONLY_EXTERNAL_AUTHENTICATION").MustBool()
+	Service.AllowOnlyExternalRegistration = sec.Key("ALLOW_ONLY_EXTERNAL_REGISTRATION").MustBool() || Service.AllowOnlyExternalAuthentication
 	Service.EmailDomainWhitelist = sec.Key("EMAIL_DOMAIN_WHITELIST").Strings(",")
 	Service.ShowRegistrationButton = sec.Key("SHOW_REGISTRATION_BUTTON").MustBool(!(Service.DisableRegistration || Service.AllowOnlyExternalRegistration))
 	Service.ShowMilestonesDashboardPage = sec.Key("SHOW_MILESTONES_DASHBOARD_PAGE").MustBool(true)
